@@ -1,0 +1,40 @@
+/*Default styles*/
+body {
+  line-height: normal;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+img {
+  vertical-align: baseline;
+}
+.container {
+  --bs-gutter-x: 0;
+  margin-left: 0;
+}
+ul {
+  margin-top: 1em;
+}
+
+/*Other styles*/
+.col {
+  position: relative;
+  height: 300px; /* Встановіть власне значення висоти стовпця */
+}
+
+.btn-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 11%;
+  border-radius: 0;
+}
+
+.text-border {
+  border-bottom: 2px solid black;
+  padding: 0px;
+}

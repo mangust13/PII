@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="Labs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students</title>
+    <link rel="stylesheet" href="students.css" />
+    <link rel="stylesheet" href="header/header.css" />
+    <!-- <link rel="manifest" href="manifest.json" /> -->
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header-title">CMS</h1>
+      <div class="header-buttons">
+        <div class="dropdown">
+          <button class="bell" aria-label="Notifications">
+            <img src="img\bell.png" width="28" alt="Bell" />
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Message from Vitaliy</a>
+            <a href="#">Illya liked your post</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="avatar" aria-label="User Profile">
+            <img src="img/avatar.png" width="25" alt="Avatar" />
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Profile</a>
+            <a href="#">Log out</a>
+          </div>
+        </div>
+        <p class="name">Khrustavchuk Maks</p>
+      </div>
+    </header>
+    <div class="container">
+      <nav class="navigation">
+        <ul class="navigation-list">
+          <li class="navigation-item"><a href="#">Dashboard</a></li>
+          <li class="navigation-item">
+            <a href="students.html">Students</a>
+          </li>
+          <li class="navigation-item">
+            <a href="tasks.html" target="_blank">Tasks</a>
+          </li>
+        </ul>
+      </nav>
+      <main class="main">
+        <div class="main-title">Students</div>
+        <button class="main-button-add" aria-label="Add Student">
+          <img src="img/add.png" width="25" alt="Add" />
+        </button>
+        <div class="main-content">
+          <table id="table" class="main-table">
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    type="checkbox"
+                    class="checkbox-head"
+                    aria-label="Select All Students"
+                  />
+                </th>
+                <th>Group</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Status</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Table content -->
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="table-checkbox"
+                    aria-label="Select Student"
+                  />
+                </td>
+                <td>PZ-25</td>
+                <td>Voin Vitaliy</td>
+                <td>M</td>
+                <td>30.04.2005</td>
+                <td><span class="circle"></span></td>
+                <td>
+                  <button class="edit-button" aria-label="Edit">
+                    <img src="img/edit.png" class="nav-but" alt="Edit" />
+                  </button>
+                  <button class="remove-button" aria-label="Remove">
+                    <img src="img/delete.png" class="nav-but" alt="Delete" />
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="table-checkbox"
+                    aria-label="Select Student"
+                  />
+                </td>
+                <td>PZ-25</td>
+                <td>Illya Nechaev</td>
+                <td>M</td>
+                <td>22.02.2005</td>
+                <td><span class="circle"></span></td>
+                <td>
+                  <button class="edit-button" aria-label="Edit">
+                    <img src="img/edit.png" class="nav-but" alt="Edit" />
+                  </button>
+                  <button class="remove-button" aria-label="Remove">
+                    <img src="img/delete.png" class="nav-but" alt="Remove" />
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="table-checkbox"
+                    aria-label="Select Student"
+                  />
+                </td>
+                <td>PZ-25</td>
+                <td>Pavlo Kurliakovskyi</td>
+                <td>M</td>
+                <td>17.06.2005</td>
+                <td><span class="circle"></span></td>
+                <td>
+                  <button class="edit-button" aria-label="Edit">
+                    <img src="img/edit.png" class="nav-but" alt="Edit" />
+                  </button>
+                  <button class="remove-button" aria-label="Remove">
+                    <img src="img/delete.png" class="nav-but" alt="Remove" />
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <nav class="main-navigation">
+            <button class="main-navigation-button" aria-label="Navigation">
+              &lt;
+            </button>
+            <button class="main-navigation-button" aria-label="Navigation">
+              1
+            </button>
+            <button class="main-navigation-button" aria-label="Navigation">
+              2
+            </button>
+            <button class="main-navigation-button" aria-label="Navigation">
+              3
+            </button>
+            <button class="main-navigation-button" aria-label="Navigation">
+              4
+            </button>
+            <button class="main-navigation-button" aria-label="Navigation">
+              &gt;
+            </button>
+          </nav>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" aria-label="Close" style="float: right"
+          >&times;</span
+        >
+        <h4 id="modal-content-title">Add Student</h4>
+        <form id="addStudentForm">
+          <div class="addStudentForm-elements">
+            <label for="group" class="category">Group:</label>
+            <select id="group" name="group">
+              <option value="PZ-25">PZ-25</option>
+              <option value="PZ-26">PZ-26</option>
+              <option value="PZ-27">PZ-27</option>
+            </select>
+          </div>
+          <br />
+          <div class="addStudentForm-elements">
+            <label for="name" class="category">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <br />
+          <div class="addStudentForm-elements">
+            <label for="surname" class="category">Surname:</label>
+            <input type="text" id="surname" name="surname" required />
+          </div>
+          <br />
+          <div class="addStudentForm-elements">
+            <label for="gender" class="category">Gender:</label>
+            <select id="gender" name="gender">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <br />
+          <div class="addStudentForm-elements">
+            <label for="birthday" class="category">Birthday:</label>
+            <input
+              type="date"
+              id="birthday"
+              name="birthday"
+              value="2005-08-01"
+              required
+            />
+          </div>
+          <br />
+          <div class="addStudentForm-elements">
+            <button type="submit" class="submit-but" aria-label="Add Student">
+              Add Student
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Remove Student Confirmation Modal -->
+    <div id="removeStudentModal" class="modal">
+      <div class="modal-content">
+        <span class="close" aria-label="Close" style="float: right"
+          >&times;</span
+        >
+        <h4>Remove Student</h4>
+        <p>Are you sure you want to remove this student?</p>
+        <div class="btnsRemove">
+          <button id="cancelRemove" aria-label="Cancel Removal">Cancel</button>
+          <button id="confirmRemove" aria-label="Confirm Removal">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="students.js"></script>
+  </body>
+</html>
