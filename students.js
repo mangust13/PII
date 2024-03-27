@@ -14,8 +14,7 @@ let rowToRemove = null;
 addButton.addEventListener("click", () => {
   document.getElementById("modal-content-title").textContent = "Add Student";
 
-  document.querySelector('#addStudentForm button[type="submit"]').textContent =
-    "Submit";
+  document.querySelector('#addStudentForm button[type="submit"]').textContent = "Submit";
   modal.style.display = "block";
 });
 
@@ -31,10 +30,6 @@ removeButtons.forEach((button) => {
   button.addEventListener("click", handleRemove);
 });
 
-closeRemoveButton.addEventListener("click", () => {
-  removeStudentModal.style.display = "none";
-});
-
 confirmRemoveButton.addEventListener("click", () => {
   if (rowToRemove !== null) {
     rowToRemove.remove();
@@ -42,6 +37,11 @@ confirmRemoveButton.addEventListener("click", () => {
     removeStudentModal.style.display = "none";
   }
 });
+
+closeRemoveButton.addEventListener("click", () => {
+  removeStudentModal.style.display = "none";
+});
+
 
 cancelRemoveButton.addEventListener("click", () => {
   rowToRemove = null;
@@ -103,54 +103,10 @@ function resetModalAndForm() {
   modal.style.display = "none";
 }
 
-addStudentForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const group = document.getElementById("group").value;
-  const name = document.getElementById("name").value;
-  const surname = document.getElementById("surname").value;
-  const gender = document.getElementById("gender").value;
-  const birthday = document.getElementById("birthday").value;
 
-  const editingRow = document.querySelector(".editing");
 
-  if (editingRow) {
-    editingRow.cells[1].textContent = group;
-    editingRow.cells[2].textContent = `${name} ${surname}`;
-    editingRow.cells[3].textContent = gender;
-    editingRow.cells[4].textContent = formatBirthday(birthday);
-    editingRow.classList.remove("editing");
-  } else {
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-              <td><input type="checkbox" class="table-checkbox"/></td>
-              <td>${group}</td>
-              <td>${name} ${surname}</td>
-              <td>${gender}</td>
-              <td>${formatBirthday(birthday)}</td> 
-              <td class="table-status"><span class="circle"></span></td>
-                  <td>
-                    <button class="edit-button">
-                      <img src="img/edit.png" class="nav-but" />
-                    </button>
-                    <button class="remove-button">
-                      <img src="img/delete.png" class="nav-but" />
-                    </button>
-                  </td>
-          `;
 
-    const tableBody = document.querySelector(".main-table tbody");
-    tableBody.appendChild(newRow);
-
-    newRow.querySelector(".edit-button").addEventListener("click", handleEdit);
-    newRow
-      .querySelector(".remove-button")
-      .addEventListener("click", handleRemove);
-  }
-
-  addStudentForm.reset();
-  modal.style.display = "none";
-});
-
+//Кружечки
 document.addEventListener("DOMContentLoaded", function () {
   const table = document.getElementById("table");
   const checkboxHead = table.querySelector(".checkbox-head");
@@ -179,15 +135,104 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function sendAddEditStudentFormDataToServer(
-  serverPath,
-  id,
-  groupField,
-  firstNameField,
-  lastNameField,
-  genderField,
-  birthdayField
-) {
+function clearFormValidation() {
+  const fields = document.querySelectorAll(
+    "#myModalAdd .modal-body .form-control"
+  );
+  fields.forEach((field) => {
+    field.classList.remove("is-invalid");
+  });
+}
+
+
+
+function shakeInvalidInputs() {
+  const invalidFields = document.querySelectorAll(".is-invalid");
+  invalidFields.forEach((field) => {
+    field.classList.add("shake");
+    setTimeout(() => {
+      field.classList.remove("shake");
+    }, 500);
+  });
+}
+
+function validateName(name) {
+  const regex = new RegExp("[a-zA-Zа-яА-ЯёЁ ]+");
+  return regex.test(name);
+}
+
+function validateSurname(surname) {
+  const regex = new RegExp("[a-zA-Zа-яА-ЯёЁ ]+");
+  return regex.test(surname);
+}
+
+function validateBirthday(birthday) {
+  const minDate = new Date(1955, 0, 1);
+  const birthdayDate = new Date(birthday);
+  return birthdayDate >= minDate;
+}
+
+addStudentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const group = document.getElementById("group").value;
+  const name = document.getElementById("name").value;
+  const surname = document.getElementById("surname").value;
+  const gender = document.getElementById("gender").value;
+  const birthday = document.getElementById("birthday").value;
+  const id = document.getElementById('studentId').value;
+
+  const nameIsValid = validateName(name);
+  const surnameIsValid = validateSurname(surname);
+  const birthdayIsValid = validateBirthday(birthday);
+
+  if (!nameIsValid || !surnameIsValid) {
+    alert("Name and surname must contain only letters");
+    return;
+  }
+
+  if (!birthdayIsValid) {
+    alert("Student should be older than 18");
+    return;
+  }
+  const editingRow = document.querySelector(".editing");
+
+  if (editingRow) {
+    editingRow.cells[1].textContent = group;
+    editingRow.cells[2].textContent = `${name} ${surname}`;
+    editingRow.cells[3].textContent = gender;
+    editingRow.cells[4].textContent = formatBirthday(birthday);
+    editingRow.classList.remove("editing");
+  } else {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+              <td><input type="checkbox" class="table-checkbox"/></td>
+              <td>${group}</td>
+              <td>${name} ${surname}</td>
+              <td>${gender}</td>
+              <td>${formatBirthday(birthday)}</td> 
+              <td class="table-status"><span class="circle"></span></td>
+                  <td>
+                    <button class="edit-button">
+                      <img src="img/edit.png" class="nav-but" />
+                    </button>
+                    <button class="remove-button">
+                      <img src="img/delete.png" class="nav-but" />
+                    </button>
+                  </td>`;
+
+    const tableBody = document.querySelector(".main-table tbody");
+    tableBody.appendChild(newRow);
+
+    newRow.querySelector(".edit-button").addEventListener("click", handleEdit);
+    newRow.querySelector(".remove-button").addEventListener("click", handleRemove);
+    sendAddEditStudentFormDataToServer("/api/students", id, group, name, surname, gender, birthday);
+  }
+
+  addStudentForm.reset();
+  modal.style.display = "none";
+});
+
+function sendAddEditStudentFormDataToServer(serverPath, id, groupField, firstNameField, lastNameField, genderField,birthdayField) {
   let xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = function () {

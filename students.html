@@ -3,6 +3,7 @@
   <head>
     <meta name="description" content="Labs" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
     <title>Students</title>
     <link rel="stylesheet" href="students.css" />
     <link rel="stylesheet" href="header/header.css" />
@@ -42,7 +43,7 @@
             <a href="students.html">Students</a>
           </li>
           <li class="navigation-item">
-            <a href="tasks.html" target="_blank">Tasks</a>
+            <a href="tasks.html">Tasks</a>
           </li>
         </ul>
       </nav>
@@ -52,15 +53,12 @@
           <img src="img/add.png" width="25" alt="Add" />
         </button>
         <div class="main-content">
+          <div class="table-container">
           <table id="table" class="main-table">
             <thead>
               <tr>
                 <th>
-                  <input
-                    type="checkbox"
-                    class="checkbox-head"
-                    aria-label="Select All Students"
-                  />
+                  <input type="checkbox" class="checkbox-head" aria-label="Select All Students"/>
                 </th>
                 <th>Group</th>
                 <th>Name</th>
@@ -74,11 +72,7 @@
               <!-- Table content -->
               <tr>
                 <td>
-                  <input
-                    type="checkbox"
-                    class="table-checkbox"
-                    aria-label="Select Student"
-                  />
+                  <input type="checkbox" class="table-checkbox" aria-label="Select Student"/>
                 </td>
                 <td>PZ-25</td>
                 <td>Voin Vitaliy</td>
@@ -96,11 +90,7 @@
               </tr>
               <tr>
                 <td>
-                  <input
-                    type="checkbox"
-                    class="table-checkbox"
-                    aria-label="Select Student"
-                  />
+                  <input type="checkbox" class="table-checkbox" aria-label="Select Student"/>
                 </td>
                 <td>PZ-25</td>
                 <td>Illya Nechaev</td>
@@ -118,11 +108,7 @@
               </tr>
               <tr>
                 <td>
-                  <input
-                    type="checkbox"
-                    class="table-checkbox"
-                    aria-label="Select Student"
-                  />
+                  <input type="checkbox" class="table-checkbox" aria-label="Select Student"/>
                 </td>
                 <td>PZ-25</td>
                 <td>Pavlo Kurliakovskyi</td>
@@ -140,26 +126,7 @@
               </tr>
             </tbody>
           </table>
-          <nav class="main-navigation">
-            <button class="main-navigation-button" aria-label="Navigation">
-              &lt;
-            </button>
-            <button class="main-navigation-button" aria-label="Navigation">
-              1
-            </button>
-            <button class="main-navigation-button" aria-label="Navigation">
-              2
-            </button>
-            <button class="main-navigation-button" aria-label="Navigation">
-              3
-            </button>
-            <button class="main-navigation-button" aria-label="Navigation">
-              4
-            </button>
-            <button class="main-navigation-button" aria-label="Navigation">
-              &gt;
-            </button>
-          </nav>
+          </div>
         </div>
       </main>
     </div>
@@ -198,26 +165,21 @@
               <option value="F">Female</option>
             </select>
           </div>
-          <br />
+          <br/>
           <div class="addStudentForm-elements">
             <label for="birthday" class="category">Birthday:</label>
-            <input
-              type="date"
-              id="birthday"
-              name="birthday"
-              value="2005-08-01"
-              required
-            />
+            <input type="date" id="birthday" name="birthday" value="2005-08-01" required/>
+            <input type="hidden" id="studentId" name="inputId" />
           </div>
-          <br />
+          <br/>
           <div class="addStudentForm-elements">
-            <button type="submit" class="submit-but" aria-label="Add Student">
-              Add Student
-            </button>
+            <button type="submit" class="submit-but" aria-label="Add Student">Add Student</button>
           </div>
         </form>
       </div>
     </div>
+
+
     <!-- Remove Student Confirmation Modal -->
     <div id="removeStudentModal" class="modal">
       <div class="modal-content">

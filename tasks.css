@@ -38,3 +38,15 @@ ul {
   border-bottom: 2px solid black;
   padding: 0px;
 }
+
+@media (max-width: 576px) {
+  .btn-bottom {
+    height: 10%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .btn-bottom {
+    height: 9%;
+  }
+}

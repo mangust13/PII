@@ -24,7 +24,6 @@
   margin: 3px;
 }
 
-.main-navigation-button:hover,
 .remove-button:hover,
 .edit-button:hover,
 .main-button-add:hover {
@@ -34,6 +33,11 @@
 }
 
 /* Table */
+.table-container {
+  height: 400px;
+  overflow-y: auto; 
+}
+
 .main-table {
   width: 100%;
   margin-bottom: 10px;
@@ -58,23 +62,6 @@
 .table-buttons {
   display: flex;
   justify-content: center;
-}
-
-/* Navigation within Main */
-.main-navigation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-
-.main-navigation-button {
-  margin: 0 5px;
-  padding: 5px 10px;
-  border-radius: 10%;
-  border-width: 1px;
-  background-color: white;
-  color: black;
 }
 
 /* Modal container */
@@ -188,11 +175,6 @@
   .main-table th,
   .main-table td {
     padding: 6px;
-  }
-
-  .main-navigation-button {
-    padding: 4px 8px;
-    font-size: 12px;
   }
 
   .modal-content {
