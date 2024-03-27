@@ -6,7 +6,7 @@
     <title>Students</title>
     <link rel="stylesheet" href="students.css" />
     <link rel="stylesheet" href="header/header.css" />
-    <!-- <link rel="manifest" href="manifest.json" /> -->
+    <link rel="manifest" href="manifest.json" />
   </head>
   <body>
     <header class="header">
@@ -234,5 +234,20 @@
     </div>
 
     <script src="students.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("../sw.js")
+          .then((registration) => {
+            console.log(
+              "ServiceWorker registration successful with scope: ",
+              registration
+            );
+          })
+          .catch((error) => {
+            console.log("ServiceWorker registration failed: ", error);
+          });
+      }
+    </script>
   </body>
 </html>

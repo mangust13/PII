@@ -3,7 +3,7 @@ body {
   line-height: normal;
 }
 
-p {
+.name {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -22,7 +22,7 @@ ul {
 /*Other styles*/
 .col {
   position: relative;
-  height: 300px; /* Встановіть власне значення висоти стовпця */
+  height: 300px;
 }
 
 .btn-bottom {
